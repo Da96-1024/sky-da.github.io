@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>DOM事件学习笔记 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="0x00 引言HTML 和 Javascript 之间的交互式通过事件完成的。事件就是文档或浏览器窗口发生的一些特定的交互瞬间。我们可以给元素绑定事件响应程序以此来完成我们想要实现的交互动作。  
+0x01 事件流当我们鼠标点击一个按钮时，被点击的只有这个按钮吗？包含这个按钮的父元素、整个body是不是也被点击了？答案是肯定的。那么下一个问题，是先点到外围的元素还是先点到最中心的元素（我们真正想要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM事件学习笔记">
+<meta property="og:url" content="http://yoursite.com/2017/03/dom-event-study-notes/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="0x00 引言HTML 和 Javascript 之间的交互式通过事件完成的。事件就是文档或浏览器窗口发生的一些特定的交互瞬间。我们可以给元素绑定事件响应程序以此来完成我们想要实现的交互动作。  
+0x01 事件流当我们鼠标点击一个按钮时，被点击的只有这个按钮吗？包含这个按钮的父元素、整个body是不是也被点击了？答案是肯定的。那么下一个问题，是先点到外围的元素还是先点到最中心的元素（我们真正想要">
+<meta property="og:updated_time" content="2017-03-28T14:51:56.039Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DOM事件学习笔记">
+<meta name="twitter:description" content="0x00 引言HTML 和 Javascript 之间的交互式通过事件完成的。事件就是文档或浏览器窗口发生的一些特定的交互瞬间。我们可以给元素绑定事件响应程序以此来完成我们想要实现的交互动作。  
+0x01 事件流当我们鼠标点击一个按钮时，被点击的只有这个按钮吗？包含这个按钮的父元素、整个body是不是也被点击了？答案是肯定的。那么下一个问题，是先点到外围的元素还是先点到最中心的元素（我们真正想要">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-dom-event-study-notes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/dom-event-study-notes/" class="article-date">
+  <time datetime="2017-03-28T14:45:16.000Z" itemprop="datePublished">2017-03-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>►<a class="article-category-link" href="/categories/programming/frontend/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DOM事件学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="0x00-引言"><a href="#0x00-引言" class="headerlink" title="0x00 引言"></a>0x00 引言</h1><p>HTML 和 Javascript 之间的交互式通过事件完成的。事件就是文档或浏览器窗口发生的一些特定的交互瞬间。我们可以给元素绑定事件响应程序以此来完成我们想要实现的交互动作。  </p>
+<h1 id="0x01-事件流"><a href="#0x01-事件流" class="headerlink" title="0x01 事件流"></a>0x01 事件流</h1><p>当我们鼠标点击一个按钮时，被点击的只有这个按钮吗？包含这个按钮的父元素、整个body是不是也被点击了？答案是肯定的。那么下一个问题，是先点到外围的元素还是先点到最中心的元素（我们真正想要的点到元素）？对于这个问题，网景和IE给出了截然相反的定义。即事件冒泡和事件捕获。</p>
+<h2 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h2><p>当我们点击一个元素时，点击事件先在这个元素触发事件处理程序，然后这个事件向它的父元素传递，依次向外，就像从水底冒起的水泡，逐渐变大！这就是微软定义的事件冒泡流。</p>
+<h2 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h2><p>与事件冒泡相反，事件捕获流中，事件先从“最大的元素” window 被触发，然后逐渐向内传递，直到最后。就像逐渐收缩的网捕获住真正触发事件的元素。</p>
+<h2 id="DOM2级事件流"><a href="#DOM2级事件流" class="headerlink" title="DOM2级事件流"></a>DOM2级事件流</h2><p>W3C给出的DOM2级标准中规定，任何一个元素触发事件都要经历三个阶段：事件捕获———处于目标———事件冒泡。W3C完美的解决了双方的矛盾。。。。  </p>
+<h1 id="0x02-事件处理程序"><a href="#0x02-事件处理程序" class="headerlink" title="0x02 事件处理程序"></a>0x02 事件处理程序</h1><p>事件发生后，被触发的就是事件处理程序。给一个元素绑定一个事件处理程序有多种方法。  </p>
+<h2 id="HTML事件绑定"><a href="#HTML事件绑定" class="headerlink" title="HTML事件绑定"></a>HTML事件绑定</h2><pre><code>&lt;buttononclick=&quot;aciton();&quot;&gt;&lt;/button&gt;
+</code></pre><p>这种方法简单易行，浏览器都能支持。但是时间处理程序和元素太过紧密，修改起来及其不方便。</p>
+<h2 id="DOM0-级事件绑定"><a href="#DOM0-级事件绑定" class="headerlink" title="DOM0 级事件绑定"></a>DOM0 级事件绑定</h2><pre><code>&lt;buttonid=&quot;btn&quot;&gt;&lt;/button&gt;
+
+&lt;script&gt;
+
+    var elem = document.getElementById(&apos;btn&apos;);
+
+    elem.onclick = function()&amp;#123;
+
+      ......  
+
+    &amp;#125;;
+
+&lt;/script&gt;
+</code></pre><p>DOM0 级事件都是”on”+事件名的形式，比如 onclick、onmourseover等等。在一定程度上降低了元素和事件处理程序的耦合度。这样绑定的事件是可以取消的。即给同一个元素的同一个事件赋值 null，就可以覆盖掉前面绑定的事件。</p>
+<h2 id="DOM2-级事件绑定"><a href="#DOM2-级事件绑定" class="headerlink" title="DOM2 级事件绑定"></a>DOM2 级事件绑定</h2><p>DOM2 级的事件绑定引入事件监听器。可以规定元素是进行事件冒泡还是事件捕获。  </p>
+<pre><code>&lt;buttonid=&quot;btn&quot;&gt;&lt;/button&gt;
+
+&lt;script&gt;
+
+    var elem = document.getElementById(&apos;btn&apos;);
+
+    function aciton (event) &amp;#123;
+
+        ...
+
+    &amp;#125;;
+
+    elem.addEventListener(&quot;click&quot;, action, false);
+
+    //false 代表进行事件冒泡
+
+&lt;/script&gt;
+</code></pre><p>另外，事件监听器还可以给同一个元素的同一个事件添加多个处理程序，事件触发时，会按绑定时的先后顺序依次执行。（ie9以下不支持addEventListener方法，可以使用jquery，或者自己封装一个对象。）</p>
+<p>取消事件则是用removeEventListener方法，如果绑定的是个匿名函数则不能取消。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/dom-event-study-notes/" data-id="cj0tnwh4t0006tcw5pbmbsp1s" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/html5-semantic/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          html5语义化
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/js-the-aces-child-node-childnodes/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">js之访问子节点childNodes</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categorieën</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">编程</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/frontend/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/security/">安全</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PA/">PA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ctf/">ctf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PA/" style="font-size: 10px;">PA</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/pa-experimental-record-(pa2.1)/">PA实验记录（PA2.1）</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/html5-semantic/">html5语义化</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/dom-event-study-notes/">DOM事件学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/js-the-aces-child-node-childnodes/">js之访问子节点childNodes</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/a-comand/">一条命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

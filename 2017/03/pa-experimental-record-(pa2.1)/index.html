@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>PA实验记录（PA2.1） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="cpu 模拟（src/monitor/cpu-exec.c）
+通过cpu_exec() 函数模拟cpu执行，cpu.eip指向当前要执行的指令地址。
+
+传入exec()函数进行取指、译码、执行。函数返回指令长度（因为指令的长短不一）
+
+cpu.eip加上执行过的指令的长度指向下一条指令。
+exec()函数细节（src/cpu/exec/exec.c）
+exec()利用宏make_helper定义。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PA实验记录（PA2.1）">
+<meta property="og:url" content="http://yoursite.com/2017/03/pa-experimental-record-(pa2.1)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="cpu 模拟（src/monitor/cpu-exec.c）
+通过cpu_exec() 函数模拟cpu执行，cpu.eip指向当前要执行的指令地址。
+
+传入exec()函数进行取指、译码、执行。函数返回指令长度（因为指令的长短不一）
+
+cpu.eip加上执行过的指令的长度指向下一条指令。
+exec()函数细节（src/cpu/exec/exec.c）
+exec()利用宏make_helper定义。">
+<meta property="og:updated_time" content="2017-03-28T14:51:56.096Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PA实验记录（PA2.1）">
+<meta name="twitter:description" content="cpu 模拟（src/monitor/cpu-exec.c）
+通过cpu_exec() 函数模拟cpu执行，cpu.eip指向当前要执行的指令地址。
+
+传入exec()函数进行取指、译码、执行。函数返回指令长度（因为指令的长短不一）
+
+cpu.eip加上执行过的指令的长度指向下一条指令。
+exec()函数细节（src/cpu/exec/exec.c）
+exec()利用宏make_helper定义。">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-pa-experimental-record-(pa2.1)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/pa-experimental-record-(pa2.1)/" class="article-date">
+  <time datetime="2017-03-28T14:50:33.000Z" itemprop="datePublished">2017-03-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/programming/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PA实验记录（PA2.1）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="cpu-模拟（src-monitor-cpu-exec-c）"><a href="#cpu-模拟（src-monitor-cpu-exec-c）" class="headerlink" title="cpu 模拟（src/monitor/cpu-exec.c）"></a>cpu 模拟（src/monitor/cpu-exec.c）</h3><ul>
+<li><p>通过cpu_exec() 函数模拟cpu执行，cpu.eip指向当前要执行的指令地址。</p>
+</li>
+<li><p>传入exec()函数进行取指、译码、执行。函数返回指令长度（因为指令的长短不一）</p>
+</li>
+<li><p>cpu.eip加上执行过的指令的长度指向下一条指令。</p>
+<h3 id="exec-函数细节（src-cpu-exec-exec-c）"><a href="#exec-函数细节（src-cpu-exec-exec-c）" class="headerlink" title="exec()函数细节（src/cpu/exec/exec.c）"></a>exec()函数细节（src/cpu/exec/exec.c）</h3></li>
+<li><p>exec()利用宏make_helper定义。 </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> make_helper(name) int name(swaddr_t eip)</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>exec()函数内部先通过fetch_instr(eip, 1)取得指令的第一个字节即opcode（操作码）</p>
+</li>
+<li><p>通过opcode在opcode_talbe找到对应指令的模拟函数的函数名，对应模拟函数执行在 指令.c 文件中</p>
+</li>
+<li><p>模拟函数利用宏make_helper_v（看名字都应该知道是make_helper的加强版,name_v）程序生成对应函数名并调用函数</p>
+</li>
+<li><p>函数的具体实现在指令-template.h文件中，do_execute() 是主要的执行代码，其它都是一大堆宏定义用来定义名字的。。这样你就可以用两个文件写完所有mov指令</p>
+</li>
+<li><p>又有一个宏make_instr_helper(name),额，do_execute也是个宏 -。-</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> make_instr_helper(type) \</span></div><div class="line">  make_helper(concat5(instr, _, type, _, SUFFIX)) &#123; \</div><div class="line">    return idex(eip, concat4(decode_, type, _, SUFFIX), do_execute); \</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>idex函数内才是真正真的译码 decode 和执行 execute </li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/pa-experimental-record-(pa2.1)/" data-id="cj0tnwh490001tcw5itpcsfh3" class="article-share-link">Delen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PA/">PA</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/html5-semantic/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ouder</strong>
+      <div class="article-nav-title">html5语义化</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categorieën</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/">编程</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/programming/frontend/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/programming/security/">安全</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Labels</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PA/">PA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ctf/">ctf</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PA/" style="font-size: 10px;">PA</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archieven</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recente berichten</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/pa-experimental-record-(pa2.1)/">PA实验记录（PA2.1）</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/html5-semantic/">html5语义化</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/dom-event-study-notes/">DOM事件学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/js-the-aces-child-node-childnodes/">js之访问子节点childNodes</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/a-comand/">一条命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
