@@ -97,7 +97,7 @@ ECMAScript的语法大量借鉴了C及其他类C语言（如Jave和Perl）的语
 <meta property="og:description" content="语法
 
 ECMAScript的语法大量借鉴了C及其他类C语言（如Jave和Perl）的语法。">
-<meta property="og:updated_time" content="2017-03-29T09:59:23.308Z">
+<meta property="og:updated_time" content="2017-03-29T10:09:07.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript学习笔记之温习一些基本概念">
 <meta name="twitter:description" content="语法
@@ -430,7 +430,7 @@ message = 1024;   //有效，但不推荐。
 <pre><code>var message = &quot;sky&quot;, choice = true, age = 29;
 </code></pre><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a><a href="#数据类型" title="数据类型"></a>数据类型</h3><hr>
 <p>ECMAScript有五种基本数据类型：Undefined、Null、Boolean、Number、String。一种复杂类型Object，Object类型实质上是由一组无序的名值对组成的。ECMAScript不支持任何创建自定义类型的机制，而所有值最终都将是上述6种数据类型。鉴于ECMAScript是松散类型的，因此需要有一种检测给定变量的数据类型的手段——<code>typeof</code>。<br>对一个值使用<code>typeof</code>操作符可能返回下列某个字符串：</p>
-<table><br><br><thead><br><br><tr><br><br><th style="text-align:center">字符串</th><br><br><th style="text-align:center">意义</th><br><br></tr><br><br></thead><br><br><tbody><br><br><tr><br><br><td style="text-align:center">undefined</td><br><br><td style="text-align:center">这个值未定义</td><br><br></tr><br><br><tr><br><br><td style="text-align:center">boolean</td><br><br><td style="text-align:center">这个值是布尔值</td><br><br></tr><br><br><tr><br><br><td style="text-align:center">string</td><br><br><td style="text-align:center">这个值是字符串</td><br><br></tr><br><br><tr><br><br><td style="text-align:center">number</td><br><br><td style="text-align:center">这个值是数值</td><br><br></tr><br><br><tr><br><br><td style="text-align:center">function</td><br><br><td style="text-align:center">这个值是函数</td><br><br></tr><br><br><tr><br><br><td style="text-align:center">object</td><br><br><td style="text-align:center">这个值是对象或null</td><br><br></tr><br><br></tbody><br><br></table>
+<table><br>  <thead><br>    <tr><br>      <th style="text-align:center">字符串</th><br>      <th style="text-align:center">意义</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <td style="text-align:center">undefined</td><br>      <td style="text-align:center">这个值未定义</td><br>    </tr><br>    <tr><br>      <td style="text-align:center">boolean</td><br>      <td style="text-align:center">这个值是布尔值</td><br>    </tr><br>    <tr><br>      <td style="text-align:center">string</td><br>      <td style="text-align:center">这个值是字符串</td><br>    </tr><br>    <tr><br>      <td style="text-align:center">number</td><br>      <td style="text-align:center">这个值是数值</td><br>    </tr><br>    <tr><br>      <td style="text-align:center">function</td><br>      <td style="text-align:center">这个值是函数</td><br>    </tr><br>    <tr><br>      <td style="text-align:center">object</td><br>      <td style="text-align:center">这个值是对象或null</td><br>    </tr><br>  </tbody><br></table>
 
 <pre><code>var message = &quot;string&quot;;
 alert(typeof message);    //&quot;string&quot;
