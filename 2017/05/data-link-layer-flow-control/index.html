@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="network," />
 
 
 
@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="昨天在群里，有个部门干事问了一个关于childNodes的问题。">
+<meta name="description" content="数据链路层的关注点在OSI/ISO 七层网络体系结构模型中，数据链路层在物理层之上，在网络层之下。它主要关注解决相邻节点间传输数据可能产生的问题，对于下层物理层来的不可靠数据可以及时纠错，对上层数据可以实现传输的透明，使得相邻节点间传输数据可以效率高，相对无差错。大部分问题的出现是因为有两个理想条件无法达成：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js之访问子节点childNodes">
-<meta property="og:url" content="http://yoursite.com/2017/03/js-the-aces-child-node-childnodes/index.html">
+<meta property="og:title" content="数据链路层之流量控制">
+<meta property="og:url" content="http://yoursite.com/2017/05/data-link-layer-flow-control/index.html">
 <meta property="og:site_name" content="小角落">
-<meta property="og:description" content="昨天在群里，有个部门干事问了一个关于childNodes的问题。">
-<meta property="og:updated_time" content="2017-05-10T08:06:25.026Z">
+<meta property="og:description" content="数据链路层的关注点在OSI/ISO 七层网络体系结构模型中，数据链路层在物理层之上，在网络层之下。它主要关注解决相邻节点间传输数据可能产生的问题，对于下层物理层来的不可靠数据可以及时纠错，对上层数据可以实现传输的透明，使得相邻节点间传输数据可以效率高，相对无差错。大部分问题的出现是因为有两个理想条件无法达成：">
+<meta property="og:updated_time" content="2017-05-10T08:13:43.512Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js之访问子节点childNodes">
-<meta name="twitter:description" content="昨天在群里，有个部门干事问了一个关于childNodes的问题。">
+<meta name="twitter:title" content="数据链路层之流量控制">
+<meta name="twitter:description" content="数据链路层的关注点在OSI/ISO 七层网络体系结构模型中，数据链路层在物理层之上，在网络层之下。它主要关注解决相邻节点间传输数据可能产生的问题，对于下层物理层来的不可靠数据可以及时纠错，对上层数据可以实现传输的透明，使得相邻节点间传输数据可以效率高，相对无差错。大部分问题的出现是因为有两个理想条件无法达成：">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/js-the-aces-child-node-childnodes/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/data-link-layer-flow-control/"/>
 
 
 
 
 
-  <title> js之访问子节点childNodes | 小角落 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 数据链路层之流量控制 | 小角落 </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -268,7 +268,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/js-the-aces-child-node-childnodes/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/data-link-layer-flow-control/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="浅歌随风">
@@ -289,7 +289,7 @@
             
             
               
-                js之访问子节点childNodes
+                数据链路层之流量控制
               
             
           </h1>
@@ -304,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-28T22:41:57+08:00">
-                2017-03-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-10T15:59:30+08:00">
+                2017-05-10
               </time>
             
 
@@ -327,19 +327,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/programming/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/programming/frontend/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
+                  <a href="/categories/computernetwork/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
                   </a>
                 </span>
 
@@ -356,7 +345,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/03/js-the-aces-child-node-childnodes/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/05/data-link-layer-flow-control/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -365,7 +354,7 @@
 
           
           
-             <span id="/2017/03/js-the-aces-child-node-childnodes/" class="leancloud_visitors" data-flag-title="js之访问子节点childNodes">
+             <span id="/2017/05/data-link-layer-flow-control/" class="leancloud_visitors" data-flag-title="数据链路层之流量控制">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -394,32 +383,83 @@
       
 
       
-        <p>昨天在群里，有个部门干事问了一个关于childNodes的问题。<a id="more"></a>这是他的html代码:</p>
-<pre><code>&lt;ul&gt;
-
-&lt;li&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;/li&gt;
-
-&lt;/ul&gt;
-</code></pre><blockquote>
-<p>为什么childNode[0].nodeName返回的结果是#text，而不是li?  </p>
+        <h1 id="数据链路层的关注点"><a href="#数据链路层的关注点" class="headerlink" title="数据链路层的关注点"></a>数据链路层的关注点</h1><p>在OSI/ISO 七层网络体系结构模型中，数据链路层在物理层之上，在网络层之下。它主要关注解决<strong>相邻节点</strong>间传输数据可能产生的问题，对于下层物理层来的不可靠数据可以及时纠错，对上层数据可以实现传输的透明，使得相邻节点间传输数据可以效率高，相对无差错。大部分问题的出现是因为有两个理想条件无法达成：<br>  <a id="more"></a></p>
+<ul>
+<li>链路是理想的传输新到，所传输的任何数据都不会发生丢失也不会出差错</li>
+<li>接收方的接收速率总是和发送方的发送相率想等</li>
+</ul>
+<p>这也就是数据链路层要解决的主要问题。</p>
+<h1 id="数据链路层的主要功能"><a href="#数据链路层的主要功能" class="headerlink" title="数据链路层的主要功能"></a>数据链路层的主要功能</h1><blockquote>
+<p>数据链路层是在物理层提供的比特流传送服务的基础上，通过一系列的控制和管理，构成透明的、相对无差错的数据链路，向网络层提供可靠、有效的数据帧传送的服务。</p>
 </blockquote>
-<p>正好前两天在慕课网上复习js的一些基础知识时，复习到了这个知识点。现在总结一下。  </p>
-<h1 id="0x01-childNodes属性的相关知识"><a href="#0x01-childNodes属性的相关知识" class="headerlink" title="0x01 childNodes属性的相关知识"></a>0x01 childNodes属性的相关知识</h1><p>从字面意思上就可以知道，这个属性是来获取当前结点的所有子节点的。</p>
-<pre><code>1
-
-
-
-elementNode.childNodes
-</code></pre><p>它的返回值不是一个数组，而是一个NodeList对象，它具有length属性，也可以通过索引来进行调用。</p>
-<h1 id="0x02-出现偏差的原因"><a href="#0x02-出现偏差的原因" class="headerlink" title="0x02 出现偏差的原因"></a>0x02 出现偏差的原因</h1><p>其实很简单，DOM节点有三种：元素节点、文本节点和属性节点。在firefox、chrome、opera、safari浏览器中元素节点之间的空白字符会生成文字节点。所以ul的子节点不仅仅有li这种元素节点而且会有很多空白字符生成的文本节点。因此需要我们在处理之前通过nodeType属性把非元素节点过滤掉。</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>补充</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>链路管理</td>
+<td>数据链路的建立、维持和释放</td>
+</tr>
+<tr>
+<td>帧定界</td>
+<td>接收方可以在比特流准确识别一帧的开始和结束在什么地方</td>
+</tr>
+<tr>
+<td>流量控制</td>
+<td>发送方的发送速率必须使接收方来得及接收</td>
+</tr>
+<tr>
+<td>差错控制</td>
+<td>-</td>
+</tr>
+<tr>
+<td>数据和控制信息的识别</td>
+<td>-</td>
+</tr>
+<tr>
+<td>透明传输</td>
+<td>不管所传数据是怎样的比特组合，都可以在链路上传送（对网络层透明）</td>
+</tr>
+<tr>
+<td>寻址</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h1 id="数据链路层的流量控制"><a href="#数据链路层的流量控制" class="headerlink" title="数据链路层的流量控制"></a>数据链路层的流量控制</h1><p>数据链路层主要通过停止-等待的方式来进行流量控制，它又分为开关式流量控制和协议式流量控制。</p>
+<h2 id="开关式流量控制"><a href="#开关式流量控制" class="headerlink" title="开关式流量控制"></a>开关式流量控制</h2><p>这种方式是有接收方来控制的。接收方根据自己缓存区是否达到上限（下限），通过硬件或软件的方法向发送放发送信号，来控制发送速率。快了就关，慢了就开。</p>
+<p>硬件是利用通信接口的通信控制线来实现的。如计算机的RS-232串行接口中，就包含了控制电路RTS/CTS、DTR/DSR。软件则是在传输的数据流中加入控制字符 XON/XOFF实现的。</p>
+<p>这种开关式流量控制有效的避免了接收方接收速率跟不上发送速率可能发生的缓存区溢出和处理能力的过荷。但是它没有任何差错控制的能力。</p>
+<h2 id="协议式流量控制"><a href="#协议式流量控制" class="headerlink" title="协议式流量控制"></a>协议式流量控制</h2><p>停止–等待协议是最简单的协议式流量控制策略。</p>
+<ol>
+<li>发送方发送一个帧，便停下来等待接收方回应</li>
+<li>接收方收到数据，向发送方返回一个ACK确认帧</li>
+<li>发送方成功接收到ACK，继续发送下一帧</li>
+</ol>
+<p>以上是一次理想状况下的数据收发。</p>
+<ul>
+<li>如果数据帧在发送过程中出错，但接收方收到后，能识别出数据帧并发现出错，则返回NAK否认帧，发送方重发该帧。</li>
+<li>如果数据帧在发送过程中出错，接收收方收到后，无法识别丢弃了该帧，发送方定时器超时后重发该帧</li>
+<li>如果ACK确认帧丢失，则接收方在发送数据时设置的计时器超时，重发该帧，接收方收到后丢弃并发送ACK。（这里通过给帧编号，使得接收方可以判别是新的一帧还是旧的一帧）。</li>
+</ul>
+<p>停止–等待协议实现了一定的差错控制能力,超时重发和NAK重发避免了数据帧的重复丢失和丢失重复。ACK确认帧则实现了流量控制。但是它也存在着一些问题。</p>
+<p>由于发送方需要等待ACK才可以发送下一个帧,在一些传送时延比较高的信道上，信道在等待ACK的时候造成了资源浪费。同时还有一个关键问题，即超时重发的时间设定，既不能过大，也不能过小。过大会降低信道利用率；过小，发送方还来不及收到ACK就 超时重发，造成重复的资源浪费。</p>
+<h3 id="窗口滑动协议"><a href="#窗口滑动协议" class="headerlink" title="窗口滑动协议"></a>窗口滑动协议</h3><p>针对停等协议的信道利用率低，窗口滑动协议出现了（<del>不知道因果关系对不对</del>）。为了区别帧，我们给帧编排的了序号；为了减少控制开销，提高资源利用率，序号必然是循环利用的。我们在序号上套一个‘框子’（窗口），在框子里面的是允许发送和接受的帧序号，框子外面的是不允许发送和接收的（会丢弃）帧序号。当框子里的某一个序号代表的帧完成了一次传送（ACK），框子向后滑动。这就是窗口滑动协议的大致过程。</p>
+<p>根据窗口的大小，和出错后发送放的重传机制，又有连续ARQ协议（GBN:go-back-n）和选择ARQ协议。</p>
+<ul>
+<li>接收窗口和发送窗口大小都为1 –&gt; 停等协议</li>
+<li>接收窗口大小为1，发送窗口大小大于1 –&gt; 连续ARQ协议</li>
+<li>接收窗口发送窗口大小都大于1 –&gt; 选择ARQ协议</li>
+</ul>
+<h3 id="连续ARQ协议"><a href="#连续ARQ协议" class="headerlink" title="连续ARQ协议"></a>连续ARQ协议</h3><p>发送方可以不用等待ACK，连续发送所有编号在 <strong>窗口内</strong> 的数据帧，收到ACK后窗口移动。接收方窗口大小为1，只有收到窗口内的编号的正确帧才会返回ACK并移动窗口，如果收到序号超前的帧或收到的帧无法识别，则是数据帧发生丢失或出错，需要丢弃所有出错帧之后已发送的帧，请求重发当前帧，相当于后退N步退到了出错帧，重新开始。从回退就可以看出，如果发送方超时设定过长，发送速率过快，极易造成资源浪费（后退的N步都相当于白发）。</p>
+<p>在连续QRQ协议中发送方窗口大小的选择有没有限制呢？答案是有限制。先看一个例子：</p>
+<p>假设帧序号使用3个比特位，即共循环使用0~7八个序号，窗口大小也为8。 正常情况下是没有什么问题的。但是假设0~7号的ACK都丢失，那么发送方会重发0~7帧，但是接收方就无法判断这是新的八帧还是旧的八帧，产生错误。但是当把窗口大小设为 $2^n-1$ （n 为序号所占的比特位数）就可以避免这种问题。即使全部7帧的ACK丢失，重发了0~6号帧，但接收方等待的是7，0~5号帧，所以可以判断出是之前的帧。如果新的7号帧丢失，接收方也可以通过窗口大小判断出0~5是新帧，而0~6是旧帧。</p>
+<h3 id="选择ARQ协议"><a href="#选择ARQ协议" class="headerlink" title="选择ARQ协议"></a>选择ARQ协议</h3><p>针对连续ARQ协议的问题，选择ARQ协议，则是只重发出错帧。代价就是接收方要有足够的缓存空间，可以暂存 <strong>窗口</strong> 内出错帧后面的数据帧。等出错帧重发且正确接收后，接收方将缓存区里的数据帧再按顺序提交给网络层，并滑动窗口。</p>
+<p>同样的选择ARQ协议也有窗口大小的问题。选择ARQ协议的接受窗口大于1，且对帧的到来没有顺序的要求，可见宽松的条件对应的自然是窗口的上限应该更小一点，接受方的窗口大小应该小于等与$2^{n-1}$（序号的一半），发送窗口一般和接收窗口保持一致。这样就可以保证窗口滑动后，窗口里的新增的序号不是上一次窗口里的序号。同样是一个简单的场景，序号为0~7，窗口大小为5，发送方接受到0~4号帧后，返回ACK，期待5，6，7，0，1号帧；但是0号帧的ACK丢失，发送方重新发送0号帧，因为选择ARQ协议对帧到达的顺序性没有要求，接收方会把该0帧当作新帧，缓存下来，导致错误。</p>
 
       
     </div>
@@ -449,7 +489,7 @@ elementNode.childNodes
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            <a href="/tags/network/" rel="tag"># network</a>
           
         </div>
       
@@ -462,8 +502,8 @@ elementNode.childNodes
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/a-comand/" rel="next" title="一条命令">
-                <i class="fa fa-chevron-left"></i> 一条命令
+              <a href="/2017/03/pa-experimental-record-(pa2.1)/" rel="next" title="PA实验记录（PA2.1）">
+                <i class="fa fa-chevron-left"></i> PA实验记录（PA2.1）
               </a>
             
           </div>
@@ -471,10 +511,6 @@ elementNode.childNodes
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/dom-event-study-notes/" rel="prev" title="DOM事件学习笔记">
-                DOM事件学习笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -622,7 +658,7 @@ elementNode.childNodes
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0x01-childNodes属性的相关知识"><span class="nav-number">1.</span> <span class="nav-text">0x01 childNodes属性的相关知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0x02-出现偏差的原因"><span class="nav-number">2.</span> <span class="nav-text">0x02 出现偏差的原因</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据链路层的关注点"><span class="nav-number">1.</span> <span class="nav-text">数据链路层的关注点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据链路层的主要功能"><span class="nav-number">2.</span> <span class="nav-text">数据链路层的主要功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据链路层的流量控制"><span class="nav-number">3.</span> <span class="nav-text">数据链路层的流量控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#开关式流量控制"><span class="nav-number">3.1.</span> <span class="nav-text">开关式流量控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协议式流量控制"><span class="nav-number">3.2.</span> <span class="nav-text">协议式流量控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#窗口滑动协议"><span class="nav-number">3.2.1.</span> <span class="nav-text">窗口滑动协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连续ARQ协议"><span class="nav-number">3.2.2.</span> <span class="nav-text">连续ARQ协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择ARQ协议"><span class="nav-number">3.2.3.</span> <span class="nav-text">选择ARQ协议</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
