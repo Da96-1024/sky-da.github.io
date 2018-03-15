@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/03/dom-event-study-notes/index.html">
 <meta property="og:site_name" content="小角落">
 <meta property="og:description" content="0x00 引言HTML 和 Javascript 之间的交互式通过事件完成的。事件就是文档或浏览器窗口发生的一些特定的交互瞬间。我们可以给元素绑定事件响应程序以此来完成我们想要实现的交互动作。">
-<meta property="og:updated_time" content="2018-02-17T04:54:20.695Z">
+<meta property="og:updated_time" content="2018-03-15T03:38:13.699Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DOM事件学习笔记">
 <meta name="twitter:description" content="0x00 引言HTML 和 Javascript 之间的交互式通过事件完成的。事件就是文档或浏览器窗口发生的一些特定的交互瞬间。我们可以给元素绑定事件响应程序以此来完成我们想要实现的交互动作。">
@@ -216,6 +216,16 @@
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            简历
           </a>
         </li>
       
@@ -398,43 +408,15 @@
 <h1 id="0x01-事件流"><a href="#0x01-事件流" class="headerlink" title="0x01 事件流"></a>0x01 事件流</h1><p>当我们鼠标点击一个按钮时，被点击的只有这个按钮吗？包含这个按钮的父元素、整个body是不是也被点击了？答案是肯定的。那么下一个问题，是先点到外围的元素还是先点到最中心的元素（我们真正想要的点到元素）？对于这个问题，网景和IE给出了截然相反的定义。即事件冒泡和事件捕获。</p>
 <h2 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h2><p>当我们点击一个元素时，点击事件先在这个元素触发事件处理程序，然后这个事件向它的父元素传递，依次向外，就像从水底冒起的水泡，逐渐变大！这就是微软定义的事件冒泡流。</p>
 <h2 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h2><p>与事件冒泡相反，事件捕获流中，事件先从“最大的元素” window 被触发，然后逐渐向内传递，直到最后。就像逐渐收缩的网捕获住真正触发事件的元素。</p>
-<h2 id="DOM2级事件流"><a href="#DOM2级事件流" class="headerlink" title="DOM2级事件流"></a>DOM2级事件流</h2><p>W3C给出的DOM2级标准中规定，任何一个元素触发事件都要经历三个阶段：事件捕获———处于目标———事件冒泡。W3C完美的解决了双方的矛盾。。。。  </p>
+<h2 id="DOM2级事件流"><a href="#DOM2级事件流" class="headerlink" title="DOM2级事件流"></a>DOM2级事件流</h2><p>W3C给出的DOM2级标准中规定，任何一个元素触发事件都要经历三个阶段：事件捕获———事件目标———事件冒泡。W3C完美的解决了双方的矛盾。。。。  </p>
 <h1 id="0x02-事件处理程序"><a href="#0x02-事件处理程序" class="headerlink" title="0x02 事件处理程序"></a>0x02 事件处理程序</h1><p>事件发生后，被触发的就是事件处理程序。给一个元素绑定一个事件处理程序有多种方法。  </p>
-<h2 id="HTML事件绑定"><a href="#HTML事件绑定" class="headerlink" title="HTML事件绑定"></a>HTML事件绑定</h2><pre><code>&lt;buttononclick=&quot;aciton();&quot;&gt;&lt;/button&gt;
-</code></pre><p>这种方法简单易行，浏览器都能支持。但是时间处理程序和元素太过紧密，修改起来及其不方便。</p>
-<h2 id="DOM0-级事件绑定"><a href="#DOM0-级事件绑定" class="headerlink" title="DOM0 级事件绑定"></a>DOM0 级事件绑定</h2><pre><code>&lt;buttonid=&quot;btn&quot;&gt;&lt;/button&gt;
-
-&lt;script&gt;
-
-    var elem = document.getElementById(&apos;btn&apos;);
-
-    elem.onclick = function()&amp;#123;
-
-      ......  
-
-    &amp;#125;;
-
-&lt;/script&gt;
-</code></pre><p>DOM0 级事件都是”on”+事件名的形式，比如 onclick、onmourseover等等。在一定程度上降低了元素和事件处理程序的耦合度。这样绑定的事件是可以取消的。即给同一个元素的同一个事件赋值 null，就可以覆盖掉前面绑定的事件。</p>
+<h2 id="HTML事件绑定"><a href="#HTML事件绑定" class="headerlink" title="HTML事件绑定"></a>HTML事件绑定</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"aciton();"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这种方法简单易行，浏览器都能支持。但是事件处理程序和元素太过紧密，修改起来很不方便。</p>
+<h2 id="DOM0-级事件绑定"><a href="#DOM0-级事件绑定" class="headerlink" title="DOM0 级事件绑定"></a>DOM0 级事件绑定</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">buttonid="btn"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">    var elem = document.getElementById('btn');</div><div class="line">    elem.onclick = function()&#123;</div><div class="line">      ......  </div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>DOM0 级事件都是”on”+事件名的形式，比如 onclick、onmourseover等等。在一定程度上降低了元素和事件处理程序的耦合度。这样绑定的事件是可以取消的。即给同一个元素的同一个事件赋值 null，就可以覆盖掉前面绑定的事件。</p>
 <h2 id="DOM2-级事件绑定"><a href="#DOM2-级事件绑定" class="headerlink" title="DOM2 级事件绑定"></a>DOM2 级事件绑定</h2><p>DOM2 级的事件绑定引入事件监听器。可以规定元素是进行事件冒泡还是事件捕获。  </p>
-<pre><code>&lt;buttonid=&quot;btn&quot;&gt;&lt;/button&gt;
-
-&lt;script&gt;
-
-    var elem = document.getElementById(&apos;btn&apos;);
-
-    function aciton (event) &amp;#123;
-
-        ...
-
-    &amp;#125;;
-
-    elem.addEventListener(&quot;click&quot;, action, false);
-
-    //false 代表进行事件冒泡
-
-&lt;/script&gt;
-</code></pre><p>另外，事件监听器还可以给同一个元素的同一个事件添加多个处理程序，事件触发时，会按绑定时的先后顺序依次执行。（ie9以下不支持addEventListener方法，可以使用jquery，或者自己封装一个对象。）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">    var elem = document.getElementById('btn');</div><div class="line">    function aciton (event) &#123;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">    elem.addEventListener("click", action, false);</div><div class="line">    //false 代表进行事件冒泡</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>另外，事件监听器还可以给同一个元素的同一个事件添加多个处理程序，事件触发时，会按绑定时的先后顺序依次执行。（ie9以下不支持addEventListener方法，可以使用jquery，或者自己封装一个对象。）</p>
 <p>取消事件则是用removeEventListener方法，如果绑定的是个匿名函数则不能取消。</p>
 
       
@@ -478,7 +460,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/js-aces-child-node-childnodes/" rel="next" title="js之访问子节点childNodes">
+              <a href="/2017/03/js-aces-child-nodes-childnodes/" rel="next" title="js之访问子节点childNodes">
                 <i class="fa fa-chevron-left"></i> js之访问子节点childNodes
               </a>
             
@@ -488,7 +470,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/html5-semantic/" rel="prev" title="html5语义化">
+              <a href="/2017/03/html5-semantics/" rel="prev" title="html5语义化">
                 html5语义化 <i class="fa fa-chevron-right"></i>
               </a>
             

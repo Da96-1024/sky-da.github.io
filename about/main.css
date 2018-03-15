@@ -1,0 +1,89 @@
+ul{
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+li>i {
+  width: 16px;
+  height: 16px;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+}
+a:link, a:visited{
+  color: #72ACE3;
+}
+.wapper {
+  margin: 20px auto;
+  width: 960px;
+  border: solid 1px #d8dde4;
+}
+
+.left, .right {
+  display: inline-block;
+  height: 1300px;
+  vertical-align: middle;
+}
+/* left */
+.left {
+  border-right: solid 1px #d8dde4;
+  width: 220px;
+  background-color: rgb(242,244,246);
+}
+.left > ul {
+  margin-top: 26px;
+}
+.base-info{
+  text-align: left;
+  margin-left: 30px;
+  font-size: 14px;
+}
+.base-info > li {
+  margin: 10px 0;
+}
+.base-info > li > span {
+  margin-left: 2px;
+}
+.name {
+  margin-left: 2px!important;
+}
+
+
+.right >ul{
+  text-align: left;
+  width: 700px;
+}
+.right h1 {
+  margin: 20px 4px;
+}
+.education {
+  margin-top: 10px;
+}
+.skill, .working-exp, .projects-exp, .projects-exp, .school-exp,  .personal {
+  margin-top: 40px;
+}
+
+.skill li, .working-exp li, .projects-exp  li, .school-exp li {
+  margin: 10px 0;
+}
+.education > span {
+  margin: 5px 15px;
+}
+.working-exp > span {
+  margin: 5px 15px
+}
+
+.projects-exp > ul, .school-exp > ul, .personal > ul{
+  text-align: left;
+  margin: 5px 15px;
+}
+.projects-exp h4, .school-exp h4{
+  margin:5px 0;
+}
+hr {
+  border:solid #d8dde4 1px;
+}
+.personal span {
+  margin: 5px 15px;
+}
